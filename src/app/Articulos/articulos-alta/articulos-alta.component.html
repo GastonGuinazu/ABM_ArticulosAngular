@@ -1,0 +1,41 @@
+<br>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-8">
+            <form #personaForm="ngForm">
+                <div class="mb-3">
+                    <label for="txtCodigo" class="form-label">Codigo:</label>
+                    <input required type="number" class="form-control" id="txtCodigo" name="codigo"
+                        [(ngModel)]="articulo.codigo">
+                </div>
+                <div class="mb-3">
+                    <label for="txtNombre:" class="form-label">Nombre:</label>
+                    <input required type="text" class="form-control" id="txtNombre" name="nombre"
+                        [(ngModel)]="articulo.nombre" #nombre="ngModel"
+                        [class.invalido]="nombre.invalid && nombre.touched">
+                </div>
+                <div class="mb-3">
+                    <label for="txtPrecio" class="form-label">Precio:</label>
+                    <input type="number" class="form-control" id="txtPrecio" name="precio" [(ngModel)]="articulo.precio">
+                </div>
+                <div class="mb-3">
+                    <label for="txtStock" class="form-label">Stock:</label>
+                    <input required type="number" class="form-control" id="txtStock" name="stock"
+                        [(ngModel)]="articulo.stock">
+                </div>
+                <div class="mb-3">
+                    <label for="selectCat" class="form-label">Categoria</label>
+                    <select class="form-select" name="categoriaId" [(ngModel)]="articulo.categoriaId">
+                        <option *ngFor="let categoria of categorias" [ngValue]="categoria.id">
+                            {{categoria.nombre}}
+                        </option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary" (click)="guardar()">Guardar</button>
+                <!-- <button type="submit" class="btn btn-primary" (click)="guardar()"[disabled]="personaForm.invalid">Guardar</button> -->
+                <button type="submit" class="btn btn-secondary" (click)="cancelar()">Cancelar</button>
+            </form>
+        </div>        
+    </div>
+</div>
